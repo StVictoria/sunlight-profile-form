@@ -37,16 +37,23 @@ const fields = [
 ];
 
 export default function UserForm({ isFormOpen, handleDialogOpen }) {
+  const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
 
   async function handleFormSubmit(values) {
-    const response = await axios
-      .post("http://localhost:3005/api", JSON.stringify(values))
-      .catch((error) => console.log(error.response));
-
+    try {
+      const response = await axios.post(
+        "http://localhost:3005/api",
+        JSON.stringify(values)
+      );
+      setLoading(true);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+    setLoading(false);
     handleDialogOpen();
-
-    console.log(response);
   }
 
   const renderUserForm = (fields) =>
@@ -99,7 +106,11 @@ export default function UserForm({ isFormOpen, handleDialogOpen }) {
               {renderUserForm(fields)}
             </section>
 
-            <CustomButton name="Сохранить изменения" type="submit" />
+            <CustomButton
+              isLoading={isLoading}
+              name="Сохранить изменения"
+              type="submit"
+            />
           </form>
         )}
       />
