@@ -14,7 +14,12 @@ app.post("/api", (request, response) => {
   console.log("body", request.body);
 
   axios
-    .post("http://jsonplaceholder.typicode.com/posts", request.body)
+    .post("http://jsonplaceholder.typicode.com/posts", request.body, {
+      headers: {
+        "Content-Type": "application/json",
+        "x-token-access": "random",
+      },
+    })
     .then((res) => {
       console.log("Body: ", res);
     })
