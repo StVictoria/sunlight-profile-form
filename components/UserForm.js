@@ -1,9 +1,12 @@
+import { useState } from "react";
 import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import { Form, Field } from "react-final-form";
 import TextField from "@material-ui/core/TextField";
 
 import UserFormStyles from "../styles/UserForm.module.scss";
+import { validateForm, isFieldError } from "../utils/validate";
+import ErrorMessage from "./ErrorMessage";
 
 const styles = {
   MuiPaper: {
@@ -21,17 +24,35 @@ const styles = {
 };
 
 const fields = [
-  { id: 0, name: "userName", label: "Фамилия и имя", iconPath: "/badge.png" },
-  { id: 1, name: "email", label: "E-mail", iconPath: "/mail.png" },
+  {
+    id: 0,
+    name: "userName",
+    label: "Фамилия и имя",
+    placeholder: "Укажите Вашу вамилию и имя",
+    type: "text",
+    iconPath: "/badge.png",
+  },
+  {
+    id: 1,
+    name: "email",
+    label: "E-mail",
+    placeholder: "ivanova@mail.ru",
+    type: "email",
+    iconPath: "/mail.png",
+  },
   {
     id: 2,
     name: "phoneNumber",
     label: "Номер телефона",
+    type: "tel",
+    placeholder: "Укажите номер телефона",
     iconPath: "/phone.png",
   },
 ];
 
 export default function UserForm({ handleDialogOpen }) {
+  const [isError, setError] = useState(false);
+
   const handleFormSubmit = (values) => {
     handleDialogOpen();
     // axios
@@ -60,10 +81,14 @@ export default function UserForm({ handleDialogOpen }) {
                 id={field.name}
                 {...input}
                 {...rest}
+                placeholder={field.placeholder}
+                type={field.type}
+                error={isFieldError(meta)}
                 label={field.label}
                 style={styles.TextField}
                 variant="outlined"
               />
+              <ErrorMessage meta={meta} />
             </div>
           )}
         />
@@ -77,7 +102,7 @@ export default function UserForm({ handleDialogOpen }) {
     <Paper style={styles.MuiPaper}>
       <Form
         onSubmit={handleFormSubmit}
-        // validate={validate}
+        validate={validateForm}
         render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit} className={UserFormStyles.UserForm}>
             <section className={UserFormStyles.MainFormContent}>

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var userName = \"\";","map":{"version":3,"sources":["C:/Users/vstepnova/Desktop/тестовые задания/test1/utils/constants.js"],"names":["userName"],"mappings":"AAAA,OAAO,IAAMA,QAAQ,GAAG,EAAjB","sourcesContent":["export const userName = \"\";\r\n"]},"metadata":{},"sourceType":"module"}
