@@ -34,7 +34,7 @@ const fields = [
   },
 ];
 
-export default function UserForm({ handleDialogOpen }) {
+export default function UserForm({ isFormOpen, handleDialogOpen }) {
   const [isError, setError] = useState(false);
 
   const handleFormSubmit = (values) => {
@@ -83,7 +83,10 @@ export default function UserForm({ handleDialogOpen }) {
     ));
 
   return (
-    <Paper className={UserFormStyles.UserFormMuiPaper}>
+    <Paper
+      className={UserFormStyles.UserFormMuiPaper}
+      style={isFormOpen ? { display: "block" } : { display: "none" }}
+    >
       <Form
         onSubmit={handleFormSubmit}
         validate={validateForm}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 
 import AppStyles from "../styles/App.module.scss";
@@ -7,7 +8,10 @@ import Header from "../components/Header";
 import Dialog from "../components/Dialog";
 
 export default function App() {
+  const [isFormOpen, setFormClose] = useState(true);
   const { isOpen, handleDialogOpen, handleDialogClose } = useDialogHook();
+
+  const handleFormClose = () => setFormClose(!isFormOpen);
 
   return (
     <section className="App">
@@ -27,7 +31,11 @@ export default function App() {
           <h3 className={AppStyles.ProfileRoutesHeader}>
             Главная/Личный профиль
           </h3>
-          <Profile handleDialogOpen={handleDialogOpen} />
+          <Profile
+            handleDialogOpen={handleDialogOpen}
+            isFormOpen={isFormOpen}
+            onFormClose={handleFormClose}
+          />
           <Dialog isOpen={isOpen} onClose={handleDialogClose} />
         </section>
       </main>

@@ -34,7 +34,7 @@
     }
   }
 
-  .Close {
+  .CloseButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,11 +44,8 @@
     background: none;
     outline-style: none;
     cursor: pointer;
-
-    .CloseImg {
-      width: 14px;
-      height: 14px;
-      margin-left: 10px;
-    }
+  }
+  .CloseIcon {
+    margin-bottom: 2px;
   }
 }

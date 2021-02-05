@@ -1,9 +1,11 @@
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
+import CloseIcon from "@material-ui/icons/Close";
 
 import ProfileStyles from "../styles/Profile.module.scss";
 import UserForm from "./UserForm.js";
 
-export default function Profile({ handleDialogOpen }) {
+export default function Profile({ isFormOpen, onFormClose, handleDialogOpen }) {
   return (
     <section className={ProfileStyles.Profile}>
       <Paper className={ProfileStyles.UserInfoMuiPaper}>
@@ -12,16 +14,16 @@ export default function Profile({ handleDialogOpen }) {
           <p className={ProfileStyles.UserName}>Иванова Анна Михайловна</p>
         </section>
 
-        <button className={ProfileStyles.Close}>
-          <p>Закрыть </p>
-          <img
-            src="/cross.png"
-            className={ProfileStyles.CloseImg}
-            alt="close"
-          />
-        </button>
+        <Button
+          className={ProfileStyles.CloseButton}
+          onClick={onFormClose}
+          color="primary"
+          endIcon={<CloseIcon className={ProfileStyles.CloseIcon} />}
+        >
+          {isFormOpen ? "Закрыть" : "Открыть"}
+        </Button>
       </Paper>
-      <UserForm handleDialogOpen={handleDialogOpen} />
+      <UserForm handleDialogOpen={handleDialogOpen} isFormOpen={isFormOpen} />
     </section>
   );
 }
