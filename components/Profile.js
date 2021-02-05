@@ -8,6 +8,8 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import ProfileStyles from "../styles/Profile.module.scss";
 import UserForm from "./UserForm.js";
 
+//TODO: оптимизация
+
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
