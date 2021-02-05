@@ -1,11 +1,9 @@
+import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import { Form, Field } from "react-final-form";
 import TextField from "@material-ui/core/TextField";
-import { useMachine } from "@xstate/react";
-import { Machine } from "xstate";
 
 import UserFormStyles from "../styles/UserForm.module.scss";
-import { userInfoConfig } from "../xstate/userInfo.js";
 
 const styles = {
   MuiPaper: {
@@ -34,18 +32,30 @@ const fields = [
 ];
 
 export default function UserForm() {
-  const userInfo = Machine(userInfoConfig);
-  const [info, send] = useMachine(userInfo);
+  const handleFormSubmit = (values) => {
+    axios.post(
+      "http://localhost:3005/api",
+      JSON.stringify(values),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-token-access": "random",
+        },
+      }
+    ).catch(error=>console.log(error.response))
+
+    console.log(values)
+  };
 
   const renderUserForm = (fields) =>
     fields.map((field) => (
-      <>
+      <React.Fragment key={field.id}>
         <Field
           name={field.name}
           style={styles.TextField}
-          render={() => (
+          render={({ input, meta, ...rest }) => (
             <div className={UserFormStyles.FieldItem}>
-              <label for={field.id}>
+              <label htmlFor={field.id}>
                 <img
                   src={field.iconPath}
                   className={UserFormStyles.FieldIcon}
@@ -53,7 +63,9 @@ export default function UserForm() {
                 />
               </label>
               <TextField
-                id={field.id}
+                id={field.name}
+                {...input}
+                {...rest}
                 label={field.label}
                 style={styles.TextField}
                 variant="outlined"
@@ -64,15 +76,15 @@ export default function UserForm() {
         {fields.length - 1 !== field.id ? (
           <div className={UserFormStyles.Divider} />
         ) : null}
-      </>
+      </React.Fragment>
     ));
 
   return (
     <Paper style={styles.MuiPaper}>
       <Form
-        onSubmit={() => send({ type: "SUBMIT" })}
+        onSubmit={handleFormSubmit}
         // validate={validate}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit} className={UserFormStyles.UserForm}>
             <section className={UserFormStyles.MainFormContent}>
               {renderUserForm(fields)}
@@ -82,7 +94,7 @@ export default function UserForm() {
               Сохранить изменения
             </button>
             {/* <p className={UserFormStyles.SuccessMessage}>
-              Изменения сохранены!
+              Изменения сохранены! (но это не точно)
             </p> */}
           </form>
         )}
