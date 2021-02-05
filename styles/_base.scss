@@ -1,3 +1,19 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #662d91;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ab51f0;
+}
+
 html,
 body {
   margin: 0;
