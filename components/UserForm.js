@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import UserFormStyles from "../styles/UserForm.module.scss";
 import { validateForm, isFieldError } from "../utils/validate";
 import ErrorMessage from "./ErrorMessage";
+import CustomButton from "./common/CustomButton";
 
 const fields = [
   {
@@ -96,9 +97,11 @@ export default function UserForm({ isFormOpen, handleDialogOpen }) {
               {renderUserForm(fields)}
             </section>
 
-            <button type="submit" className={UserFormStyles.SubmitButton}>
-              Сохранить изменения
-            </button>
+            <CustomButton
+              name="Сохранить изменения"
+              type="submit"
+              onClick={() => console.log("submit")}
+            />
             {/* <p className={UserFormStyles.SuccessMessage}>
               Изменения сохранены! (но это не точно)
             </p> */}

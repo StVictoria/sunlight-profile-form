@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "final-form": "^4.20.1",
-    "next": "^9.5.3",
+    "next": "^10.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-final-form": "^6.5.1",

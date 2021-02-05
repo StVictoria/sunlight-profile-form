@@ -5,7 +5,7 @@ import AppStyles from "../styles/App.module.scss";
 import useDialogHook from "../components/useDialogHook";
 import Profile from "../components/Profile";
 import Header from "../components/Header";
-import Dialog from "../components/Dialog";
+import Dialog from "../components/CustomDialog";
 
 export default function App() {
   const [isFormOpen, setFormClose] = useState(true);
