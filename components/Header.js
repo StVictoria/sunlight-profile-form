@@ -11,7 +11,7 @@ export default function Header() {
       <div className={HeaderStyles.Divider} />
       <section className={HeaderStyles.HeaderUserInfo}>
         <div className={`${HeaderStyles.UserIcon} UserIcon`} />
-        <p>Иванова А.</p>
+        <p className={HeaderStyles.UserName}>Иванова А.</p>
       </section>
     </section>
   );

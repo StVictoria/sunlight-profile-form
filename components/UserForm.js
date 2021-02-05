@@ -1,8 +1,11 @@
 import Paper from "@material-ui/core/Paper";
 import { Form, Field } from "react-final-form";
 import TextField from "@material-ui/core/TextField";
+import { useMachine } from "@xstate/react";
+import { Machine } from "xstate";
 
 import UserFormStyles from "../styles/UserForm.module.scss";
+import { userInfoConfig } from "../xstate/userInfo.js";
 
 const styles = {
   MuiPaper: {
@@ -31,7 +34,8 @@ const fields = [
 ];
 
 export default function UserForm() {
-  const handleFormSubmit = () => console.log("handleFormSubmit");
+  const userInfo = Machine(userInfoConfig);
+  const [info, send] = useMachine(userInfo);
 
   const renderUserForm = (fields) =>
     fields.map((field) => (
@@ -66,7 +70,7 @@ export default function UserForm() {
   return (
     <Paper style={styles.MuiPaper}>
       <Form
-        onSubmit={handleFormSubmit}
+        onSubmit={() => send({ type: "SUBMIT" })}
         // validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit} className={UserFormStyles.UserForm}>
@@ -77,6 +81,9 @@ export default function UserForm() {
             <button type="submit" className={UserFormStyles.SubmitButton}>
               Сохранить изменения
             </button>
+            {/* <p className={UserFormStyles.SuccessMessage}>
+              Изменения сохранены!
+            </p> */}
           </form>
         )}
       />
