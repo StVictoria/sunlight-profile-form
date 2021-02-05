@@ -64,6 +64,7 @@
 
 @media (max-width: 959px) {
   .UserFormMuiPaper {
+    padding: 40px 20px;
     .UserForm {
       .MainFormContent {
         flex-direction: column;
@@ -96,6 +97,26 @@
         }
         .FieldIcon {
           margin-right: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .UserFormMuiPaper {
+    .UserForm {
+      .MainFormContent {
+        .FieldItem {
+          width: 100%;
+          &:not(:last-child) {
+            margin-bottom: 30px;
+          }
+        }
+        .FieldIcon {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
         }
       }
     }
