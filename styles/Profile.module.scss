@@ -1,4 +1,18 @@
 .Profile {
+  .UserInfoMuiPaper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 128;
+    background: linear-gradient(270deg, #1a78c2 0%, #1a78c2 101.06%);
+    padding: 40px;
+    margin-top: 31px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
   .MainInfo {
     display: flex;
     align-items: center;

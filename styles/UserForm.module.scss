@@ -1,49 +1,63 @@
-.UserForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.UserFormMuiPaper {
+  background: #ffffff;
+  padding: 45px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 
-  .MainFormContent {
+  .UserForm {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: inherit;
-    margin-bottom: 46px;
 
-    .FieldItem {
+    .MainFormContent {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      width: 100%;
+      height: inherit;
+      margin-bottom: 46px;
+
+      .TextField {
+        height: 57px;
+        width: 254px;
+        left: 0;
+      }
+
+      .FieldItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .FieldIcon {
+        margin-right: 45px;
+      }
+
+      .Divider {
+        width: 97px;
+        height: 0px;
+        border: 1px solid #cae7fe;
+        transform: rotate(90deg);
+      }
     }
 
-    .FieldIcon {
-      margin-right: 45px;
+    .SubmitButton {
+      text-align: center;
+      height: 49px;
+      width: 212px;
+      font-size: 14px;
+      color: #ffffff;
+      background: #01bda7;
+      border: none;
+      border-radius: 36px;
+      outline-style: none;
+      cursor: pointer;
     }
 
-    .Divider {
-      width: 97px;
-      height: 0px;
-      border: 1px solid #cae7fe;
-      transform: rotate(90deg);
+    .SuccessMessage {
+      font-size: 14px;
+      color: #01bda7;
     }
-  }
-
-  .SubmitButton {
-    text-align: center;
-    height: 49px;
-    width: 212px;
-    font-size: 14px;
-    color: #ffffff;
-    background: #01bda7;
-    border: none;
-    border-radius: 36px;
-    outline-style: none;
-    cursor: pointer;
-  }
-
-  .SuccessMessage {
-    font-size: 14px;
-    color: #01bda7;
   }
 }

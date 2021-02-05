@@ -10,10 +10,9 @@
   }
 
   .Divider {
-    width: 39px;
-    height: 0px;
-    border: 1px solid #ffffff;
-    transform: rotate(90deg);
+    height: 39px;
+    border-right: 3px solid #ffffff;
+    margin: 20px;
   }
 
   .HeaderUserInfo {

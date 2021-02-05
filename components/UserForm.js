@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import { Form, Field } from "react-final-form";
 import TextField from "@material-ui/core/TextField";
@@ -7,21 +6,6 @@ import TextField from "@material-ui/core/TextField";
 import UserFormStyles from "../styles/UserForm.module.scss";
 import { validateForm, isFieldError } from "../utils/validate";
 import ErrorMessage from "./ErrorMessage";
-
-const styles = {
-  MuiPaper: {
-    background: "#FFFFFF",
-    padding: 45,
-    boxSizing: "border-box",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
-    borderRadius: 10,
-  },
-  TextField: {
-    height: 57,
-    width: 254,
-    left: 0,
-  },
-};
 
 const fields = [
   {
@@ -67,7 +51,7 @@ export default function UserForm({ handleDialogOpen }) {
       <React.Fragment key={field.id}>
         <Field
           name={field.name}
-          style={styles.TextField}
+          className={UserFormStyles.TextField}
           render={({ input, meta, ...rest }) => (
             <div className={UserFormStyles.FieldItem}>
               <label htmlFor={field.id}>
@@ -85,7 +69,7 @@ export default function UserForm({ handleDialogOpen }) {
                 type={field.type}
                 error={isFieldError(meta)}
                 label={field.label}
-                style={styles.TextField}
+                className={UserFormStyles.TextField}
                 variant="outlined"
               />
               <ErrorMessage meta={meta} />
@@ -99,7 +83,7 @@ export default function UserForm({ handleDialogOpen }) {
     ));
 
   return (
-    <Paper style={styles.MuiPaper}>
+    <Paper className={UserFormStyles.UserFormMuiPaper}>
       <Form
         onSubmit={handleFormSubmit}
         validate={validateForm}

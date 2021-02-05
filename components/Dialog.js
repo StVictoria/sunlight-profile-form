@@ -1,14 +1,10 @@
 import MuiDialog from "@material-ui/core/Dialog";
 
-const styles = {
-  "MuiDialog-paper": {
-    padding: 60,
-  },
-};
+import DialogStyles from "../styles/Dialog.module.scss";
 
 export default function Dialog({ isOpen, onClose }) {
   return (
-    <MuiDialog open={isOpen} style={styles["MuiDialog-Paper"]}>
+    <MuiDialog open={isOpen} className={DialogStyles["MuiDialog-paper"]}>
       Dialog
       <button onClick={onClose}>Close</button>
     </MuiDialog>
