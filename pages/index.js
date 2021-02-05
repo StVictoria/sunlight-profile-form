@@ -1,13 +1,16 @@
 import Head from "next/head";
 
-import Profile from "../components/Profile.js";
-import Header from "../components/Header.js";
-
 import AppStyles from "../styles/App.module.scss";
+import useDialogHook from "../components/useDialogHook";
+import Profile from "../components/Profile";
+import Header from "../components/Header";
+import Dialog from "../components/Dialog";
 
 export default function App() {
+  const { isOpen, handleDialogOpen, handleDialogClose } = useDialogHook();
+
   return (
-    <>
+    <section className="App">
       <Head>
         <title>Test Fulogy</title>
         <link
@@ -24,9 +27,10 @@ export default function App() {
           <h3 className={AppStyles.ProfileRoutesHeader}>
             Главная/Личный профиль
           </h3>
-          <Profile />
+          <Profile handleDialogOpen={handleDialogOpen} />
+          <Dialog isOpen={isOpen} onClose={handleDialogClose} />
         </section>
       </main>
-    </>
+    </section>
   );
 }

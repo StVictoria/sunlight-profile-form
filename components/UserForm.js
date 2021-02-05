@@ -31,20 +31,14 @@ const fields = [
   },
 ];
 
-export default function UserForm() {
+export default function UserForm({ handleDialogOpen }) {
   const handleFormSubmit = (values) => {
-    axios.post(
-      "http://localhost:3005/api",
-      JSON.stringify(values),
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "x-token-access": "random",
-        },
-      }
-    ).catch(error=>console.log(error.response))
+    handleDialogOpen();
+    // axios
+    //   .post("http://localhost:3005/api", JSON.stringify(values))
+    //   .catch((error) => console.log(error.response));
 
-    console.log(values)
+    console.log(values);
   };
 
   const renderUserForm = (fields) =>

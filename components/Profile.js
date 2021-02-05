@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-export default function Profile() {
+export default function Profile({ handleDialogOpen }) {
   return (
     <section className={ProfileStyles.Profile}>
       <Paper style={styles.MuiPaper}>
@@ -37,7 +37,7 @@ export default function Profile() {
           />
         </button>
       </Paper>
-      <UserForm />
+      <UserForm handleDialogOpen={handleDialogOpen} />
     </section>
   );
 }
