@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import { Form, Field } from "react-final-form";
 import TextField from "@material-ui/core/TextField";
@@ -38,14 +39,15 @@ const fields = [
 export default function UserForm({ isFormOpen, handleDialogOpen }) {
   const [isError, setError] = useState(false);
 
-  const handleFormSubmit = (values) => {
-    handleDialogOpen();
-    // axios
-    //   .post("http://localhost:3005/api", JSON.stringify(values))
-    //   .catch((error) => console.log(error.response));
+  async function handleFormSubmit(values) {
+    const response = await axios
+      .post("http://localhost:3005/api", JSON.stringify(values))
+      .catch((error) => console.log(error.response));
 
-    console.log(values);
-  };
+    handleDialogOpen();
+
+    console.log(response);
+  }
 
   const renderUserForm = (fields) =>
     fields.map((field) => (
@@ -97,14 +99,7 @@ export default function UserForm({ isFormOpen, handleDialogOpen }) {
               {renderUserForm(fields)}
             </section>
 
-            <CustomButton
-              name="Сохранить изменения"
-              type="submit"
-              onClick={() => console.log("submit")}
-            />
-            {/* <p className={UserFormStyles.SuccessMessage}>
-              Изменения сохранены! (но это не точно)
-            </p> */}
+            <CustomButton name="Сохранить изменения" type="submit" />
           </form>
         )}
       />
