@@ -1,0 +1,40 @@
+.Profile {
+  .MainInfo {
+    display: flex;
+    align-items: center;
+
+    .ProfileUserIcon {
+      width: 80px;
+      height: 80px;
+      margin-right: 42px;
+    }
+
+    .UserName {
+      font-family: Open Sans;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 41px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+  }
+
+  .Close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    background: none;
+    outline-style: none;
+    cursor: pointer;
+
+    .CloseImg {
+      width: 14px;
+      height: 14px;
+      margin-left: 10px;
+    }
+  }
+}

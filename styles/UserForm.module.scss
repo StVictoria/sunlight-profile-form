@@ -1,0 +1,42 @@
+.UserForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .MainFormContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: inherit;
+    margin-bottom: 46px;
+
+    .FieldItem {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .FieldIcon {
+      margin-right: 45px;
+    }
+
+    .Divider {
+      width: 97px;
+      height: 0px;
+      border: 1px solid #cae7fe;
+      transform: rotate(90deg);
+    }
+  }
+
+  .SubmitButton {
+    text-align: center;
+    height: 49px;
+    width: 212px;
+    font-size: 14px;
+    color: #ffffff;
+    background: #01bda7;
+    border: none;
+    border-radius: 36px;
+  }
+}

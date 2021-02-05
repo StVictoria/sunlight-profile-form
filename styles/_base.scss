@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+}
+
+.Hidden {
+  position: absolute;
+  visibility: hidden;
+}
+
+.UserIcon {
+  border-radius: 50%;
+  background: url("../public/userIcon.png") center center / contain no-repeat;
+}
+
+.Divider {
+  width: 39px;
+  height: 0px;
+  border: 1px solid #ffffff;
+  transform: rotate(90deg);
+}
