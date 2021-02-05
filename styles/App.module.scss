@@ -32,3 +32,9 @@
   padding: 20px 40px;
   box-sizing: border-box;
 }
+
+@media (max-width: 599px) {
+  .MainContent {
+    background-size: cover;
+  }
+}
